@@ -13,7 +13,7 @@ def num_input(prompt):
 
 def point_input(prompt):
     point = input(prompt)
-    while not re.match(r"-?\d*\s-?\d*", point) and point != "done":
+    while not re.match(r"-?\d*\s*-?\d*", point) and point != "done":
         point = input("Invalid input. Please try again:\n")
     return point
 
@@ -27,16 +27,15 @@ while not re.match(r"[12]", choice1):
 
 if int(choice1) == 1:
     print("Enter the coefficients of your quadratic in the standard form ax^2 + bx + c:")
-    a = int(num_input("a: "))
-    b = int(num_input("b: "))
-    c = int(num_input("c: "))
+    a = float(num_input("a: "))
+    b = float(num_input("b: "))
+    c = float(num_input("c: "))
 
     given_polynomial = classes.quadratic.Quadratic(a, b, c)
 
     print(f"The quadratic you entered is {given_polynomial.pretty_print()}")
 else:
     points = []
-    point = None
     i = 1
     print("When entering points use the format 'x y', be sure to leave a space in between!")
     print("Enter 'done' if you're done entering points.")
@@ -46,7 +45,7 @@ else:
             break
         point_array = []
         for val in point.split(" "):
-            point_array.append(int(val))
+            point_array.append(float(val))
         points.append(point_array)
         i += 1
 
