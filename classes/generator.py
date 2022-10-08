@@ -1,7 +1,7 @@
 import numpy as np
 
-import polynomial
-import quadratic
+import classes.polynomial
+import classes.quadratic
 
 
 def flatten(l):
@@ -11,7 +11,7 @@ def flatten(l):
 # creates a quadratic from three points using magic matrices
 class Generator:
     def __init__(self, *points):
-        self.points = points
+        self.points = points[0]
         self.x_coords = []
         self.y_coords = []
         for point in self.points:
@@ -28,11 +28,10 @@ class Generator:
             a = solutions[0, 0]
             b = solutions[1, 0]
             c = solutions[2, 0]
-            self.equation = quadratic.Quadratic(a, b, c)
+            self.equation = classes.quadratic.Quadratic(a, b, c)
         else:
             solutions = flatten(self.create_polynomial().tolist())
-            print(solutions)
-            self.equation = polynomial.Polynomial(solutions)
+            self.equation = classes.polynomial.Polynomial(solutions)
 
     def create_polynomial(self):
         input_array = []

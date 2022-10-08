@@ -1,9 +1,5 @@
-import quadratic
 import matplotlib.pyplot as plt
-
-from quadratic import Quadratic
-from polynomial import Polynomial
-from generator import Generator
+from classes.polynomial import Polynomial
 
 
 class Grapher:
@@ -20,4 +16,5 @@ class Grapher:
     def graph(self):
         plt.plot(self.x_values, self.y_values, scalex=self.x_values[-1] - self.x_values[0],
                  scaley=max(self.y_values) - min(self.y_values), marker='.')
+        plt.grid(linestyle='--')
         plt.show()
