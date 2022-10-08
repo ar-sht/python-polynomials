@@ -1,14 +1,11 @@
-class Quadratic:
+from polynomial import Polynomial
+
+class Quadratic(Polynomial):
     def __init__(self, a, b, c):
+        super().__init__([a, b, c])
         self.a = a
         self.b = b
         self.c = c
-
-    def evaluate(self, value):
-        first_term = self.a * (value ** 2)
-        second_term = self.b * value
-        third_term = self.c
-        return first_term + second_term + third_term
 
     def get_roots(self):
         discriminant = (self.b ** 2) - (4 * self.a * self.c)

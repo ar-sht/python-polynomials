@@ -1,12 +1,13 @@
 import quadratic
-import numpy as np
 import matplotlib.pyplot as plt
 
 from quadratic import Quadratic
+from polynomial import Polynomial
+from generator import Generator
 
 
 class Grapher:
-    def __init__(self, equation: Quadratic):
+    def __init__(self, equation: Polynomial):
         self.equation = equation
         self.x_values = []
         self.y_values = []
@@ -18,11 +19,5 @@ class Grapher:
 
     def graph(self):
         plt.plot(self.x_values, self.y_values, scalex=self.x_values[-1] - self.x_values[0],
-                 scaley=self.y_values[-1] - self.y_values[0], marker='.')
+                 scaley=max(self.y_values) - min(self.y_values), marker='.')
         plt.show()
-
-
-test_equation: Quadratic = quadratic.Quadratic(1, -1, -2)
-tester = Grapher(test_equation)
-tester.generate_points(-100, 100)
-tester.graph()
